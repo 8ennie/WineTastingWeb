@@ -14,7 +14,7 @@ import javax.ws.rs.core.Response;
 import application.model.data.User;
 import application.model.data.UserDAO;
 
-@Path("/hello")
+@Path("/users")
 @Produces(MediaType.APPLICATION_JSON)
 public class MessageResource {
 
