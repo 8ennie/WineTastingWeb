@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import application.model.data.SearchStatus;
+import application.model.data.StandEvaluation;
 import application.model.data.Wine;
 import application.model.data.WineDAO;
 import application.model.data.WineEvaluation;
@@ -88,6 +89,8 @@ public class EvaluationController implements Initializable {
 	private Wine wine;
 
 	private WineEvaluation wineEvaluation;
+	
+	private StandEvaluation standEvaluation;
 
 	public EvaluationController(MainController mainController, Wine wine) {
 		// TODO Auto-generated constructor stub
@@ -163,6 +166,23 @@ public class EvaluationController implements Initializable {
 		}
 	}
 
+	final EventHandler<Event> evaluateStandHandler = new EventHandler<Event>() {
+		@Override
+		public void handle(Event event) {
+			if (event.getEventType() != ActionEvent.ANY) {
+				if (!((KeyEvent) event).getCode().equals(KeyCode.ENTER)) {
+					return;
+				}
+			}
+
+			if (mainCon.getStage().getScene().focusOwnerProperty().get().equals(evaluateWine_Button)) {
+				if (standEvaluation == null) {
+					
+				}
+			}
+	}
+	};
+	
 	final EventHandler<Event> evaluateWineHandler = new EventHandler<Event>() {
 		@Override
 		public void handle(Event event) {

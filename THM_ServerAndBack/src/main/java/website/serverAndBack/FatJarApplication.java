@@ -1,4 +1,4 @@
-package serverAndBack;
+package website.serverAndBack;
 
 import java.util.HashSet;
 import java.util.Set;

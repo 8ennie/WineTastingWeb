@@ -1,4 +1,4 @@
-package serverAndBack;
+package website.serverAndBack;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

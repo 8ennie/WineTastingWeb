@@ -1,4 +1,4 @@
-package serverAndBack;
+package website.serverAndBack;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.DefaultServlet;
