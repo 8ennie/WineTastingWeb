@@ -9,7 +9,7 @@ public class ResourceBundleUtils {
 
     public enum ResourceKeys
     {
-    	txt_login_lable,txt_userName_lable,txt_password_lable,txt_register_Button,txt_login_Button
+    	txt_login_Lable,txt_userName_Lable,txt_password_Lable,txt_register_Button,txt_login_Button
     }
 
 
@@ -39,29 +39,27 @@ public class ResourceBundleUtils {
         System.out.println("Current Locale: " + Locale.getDefault());
         final String BUNDLE_BASENAME = "Login";
         showTexts(PropertyResourceBundle.getBundle(BUNDLE_BASENAME, Locale.GERMANY));
-//        showTexts(PropertyResourceBundle.getBundle(BUNDLE_BASENAME, Locale.UK));
+        showTexts(PropertyResourceBundle.getBundle(BUNDLE_BASENAME, Locale.UK));
     }
     
     
     private static void showTexts(final ResourceBundle resourceBundle)
+    
     {
-        final String txt_password_lable = ResourceBundleUtils.getLangString(resourceBundle,
-                ResourceKeys.txt_password_lable);
+    	final String txt_password_lable = ResourceBundleUtils.getLangString(resourceBundle,
+                ResourceKeys.txt_password_Lable);
         
         final String txt_userName_lable = ResourceBundleUtils.getLangString(resourceBundle,
-                ResourceKeys.txt_userName_lable);
+                ResourceKeys.txt_userName_Lable);
         
         final String txt_login_lable =ResourceBundleUtils.getLangString(resourceBundle,
-                ResourceKeys.txt_login_lable);
+                ResourceKeys.txt_login_Lable);
         
         final String txt_register_Button =ResourceBundleUtils.getLangString(resourceBundle,
                 ResourceKeys.txt_register_Button);
         
         final String txt_login_Button =ResourceBundleUtils.getLangString(resourceBundle,
                 ResourceKeys.txt_login_Button);
-        
-        
-        
        
     }
 

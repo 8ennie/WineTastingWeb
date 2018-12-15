@@ -28,7 +28,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Username:" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Label fx:id="userName_Lable" text="Username:" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
@@ -36,7 +36,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label text="Password:" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Label fx:id="password_Lable" text="Password:" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
@@ -88,7 +88,7 @@
             </GridPane>
          </center>
          <top>
-            <Label style="-fx-border-color: black;" text="Login" BorderPane.alignment="CENTER">
+            <Label fx:id="login_Lable" style="-fx-border-color: black;" text="Login" BorderPane.alignment="CENTER">
                <font>
                   <Font size="50.0" />
                </font>

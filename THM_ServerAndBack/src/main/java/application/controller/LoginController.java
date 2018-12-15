@@ -6,6 +6,8 @@ package application.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.localisation.ResourceBundleUtils;
+import application.localisation.ResourceBundleUtils.ResourceKeys;
 import application.model.data.User;
 import application.model.tasks.LoginProcess;
 import javafx.concurrent.WorkerStateEvent;
@@ -58,6 +60,8 @@ public class LoginController implements Initializable {
     private Label login_Lable; // Value injected by FXMLLoader
 
 	private MainController mainCon;
+	
+	
 
 	final EventHandler<Event> registerHandler = new EventHandler<Event>() {
 		@Override
@@ -110,6 +114,21 @@ public class LoginController implements Initializable {
 		this.mainCon = mainController;
 	}
 
+	public void changeLanguage(ResourceBundle resourceBundle) {
+		this.login_Lable.setText(ResourceBundleUtils.getLangString(resourceBundle,
+                ResourceKeys.txt_login_Lable)); 
+		this.userName_Lable.setText(ResourceBundleUtils.getLangString(resourceBundle,
+                ResourceKeys.txt_userName_Lable));
+		this.password_Lable.setText(ResourceBundleUtils.getLangString(resourceBundle,
+                ResourceKeys.txt_password_Lable));
+		this.register_Button.setText(ResourceBundleUtils.getLangString(resourceBundle,
+                ResourceKeys.txt_register_Button));
+		this.login_Button.setText(ResourceBundleUtils.getLangString(resourceBundle,
+                ResourceKeys.txt_login_Button));
+		
+		
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		 assert login_AnchorPane != null : "fx:id=\"login_AnchorPane\" was not injected: check your FXML file 'Login.fxml'.";

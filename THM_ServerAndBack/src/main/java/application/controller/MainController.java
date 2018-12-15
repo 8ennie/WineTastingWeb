@@ -3,6 +3,10 @@
  */
 package application.controller;
 
+import java.util.Locale;
+import java.util.PropertyResourceBundle;
+import java.util.ResourceBundle;
+
 import application.model.data.SearchStatus;
 import application.model.data.SessionInfos;
 import application.model.data.Stand;
@@ -21,15 +25,17 @@ public class MainController {
 
 	private Stage stage;
 	private SessionInfos session;
-
+	private Locale language = Locale.GERMANY  ;
+	
 	public MainController(Stage stage) {
 		this.stage = stage;
 	}
 
 	public void gotoLogin() {
 		try {
-			this.replaceSceneContent("/application/view/Login.fxml", new LoginController(this));
-
+			LoginController loginController= new LoginController(this);
+			this.replaceSceneContent("/application/view/Login.fxml", loginController);
+			loginController.changeLanguage(PropertyResourceBundle.getBundle("Login",language));
 		} catch (Exception ex) {
 			System.out.println("Login: " + ex.getMessage());
 		}
