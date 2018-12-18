@@ -11,7 +11,7 @@ public class StandEvaluationDAO extends BaseDAO implements IStandEvaluationDAO {
 	@Override
 	public StandEvaluation getStandEvaluationByID(int id) throws SQLException {
 		PreparedStatement prepareStatement = this.conn.prepareStatement(
-				"Select ID, standID, userID, review   from wine_test_db.WINEEVALUATION WHERE ID = ?");
+				"Select ID, standID, userID, review   from wine_test_db.STANDEVALUATION WHERE ID = ?");
 		prepareStatement.setInt(1, id);
 		ResultSet rs = prepareStatement.executeQuery();
 		rs.next();
@@ -23,7 +23,7 @@ public class StandEvaluationDAO extends BaseDAO implements IStandEvaluationDAO {
 	public List<StandEvaluation> getStandEvaluationByStand(Stand stand) throws SQLException {
 		List<StandEvaluation> standEvaluations = new ArrayList<>();
 		PreparedStatement prepareStatement = this.conn.prepareStatement(
-				"Select ID, standID, userID, review   from wine_test_db.WINEEVALUATION WHERE standID = ?" );
+				"Select ID, standID, userID, review   from wine_test_db.STANDEVALUATION WHERE standID = ?" );
 		prepareStatement.setInt(1, stand.getStandId().get());
 		ResultSet rs = prepareStatement.executeQuery();
 		while (rs.next()) {
@@ -36,7 +36,7 @@ public class StandEvaluationDAO extends BaseDAO implements IStandEvaluationDAO {
 	@Override
 	public boolean persistStandEvaluation(StandEvaluation standEvaluation) throws SQLException {
 		PreparedStatement prepareStatement = this.conn.prepareStatement(
-				"INSERT INTO STANDEVALUATION (standID, userID, review) VALUES (?, ?, ?)");
+				"INSERT INTO wine_test_db.STANDEVALUATION (standID, userID, review) VALUES (?, ?, ?)");
 		prepareStatement.setInt(1, standEvaluation.getStand().get().getStandId().get());
 		prepareStatement.setInt(2, standEvaluation.getUser().get().getUserID());
 		prepareStatement.setString(3, standEvaluation.getReview().get());

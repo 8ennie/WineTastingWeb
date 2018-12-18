@@ -5,7 +5,6 @@ package application.controller;
 
 import java.util.Locale;
 import java.util.PropertyResourceBundle;
-import java.util.ResourceBundle;
 
 import application.model.data.SearchStatus;
 import application.model.data.SessionInfos;
@@ -25,7 +24,7 @@ public class MainController {
 
 	private Stage stage;
 	private SessionInfos session;
-	private Locale language = Locale.GERMANY  ;
+	public Locale language = Locale.GERMANY  ;
 	
 	public MainController(Stage stage) {
 		this.stage = stage;
@@ -61,8 +60,9 @@ public class MainController {
 	
 	public void gotoRegister() {
 		try {
-			this.replaceSceneContent("/application/view/Register.fxml", new RegisterController(this));
-
+			RegisterController registerController = new RegisterController(this);
+			this.replaceSceneContent("/application/view/Register.fxml", registerController);
+			registerController.changeLanguage(PropertyResourceBundle.getBundle("Register",language));
 		} catch (Exception ex) {
 			System.out.println("Register: " + ex.getMessage());
 		}

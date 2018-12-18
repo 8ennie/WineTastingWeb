@@ -35,6 +35,9 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server
 	compile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.7.v20170914'
 	compile group: 'org.eclipse.jetty', name: 'jetty-servlet', version: '9.4.7.v20170914'
-	compile group: 'org.eclipse.jetty.http2', name: 'http2-server', version: '9.4.7.v20170914'    
+	compile group: 'org.eclipse.jetty.http2', name: 'http2-server', version: '9.4.7.v20170914'   
+	// https://mvnrepository.com/artifact/mysql/mysql-connector-java
+	compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.13'
+	 
 }
 

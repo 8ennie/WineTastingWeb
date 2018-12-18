@@ -54,6 +54,10 @@ public class StandEvaluation {
 		this.review = review;
 	}
 
+	public void setReview(String review) {
+		this.review = new SimpleStringProperty(review);
+	}
+	
 	public IntegerProperty getStandEvaluationId() {
 		return standEvaluationId;
 	}

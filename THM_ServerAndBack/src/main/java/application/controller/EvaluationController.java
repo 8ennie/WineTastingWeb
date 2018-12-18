@@ -10,11 +10,14 @@ import java.util.ResourceBundle;
 
 import application.model.data.SearchStatus;
 import application.model.data.StandEvaluation;
+import application.model.data.StandEvaluationDAO;
 import application.model.data.Wine;
 import application.model.data.WineDAO;
 import application.model.data.WineEvaluation;
 import application.model.data.WineEvaluationDAO;
+import application.model.tasks.AddStandEvaluation;
 import application.model.tasks.AddWineEvaluation;
+import application.model.tasks.ChangeStandEvaluation;
 import application.model.tasks.ChangeWineEvaluation;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -89,7 +92,7 @@ public class EvaluationController implements Initializable {
 	private Wine wine;
 
 	private WineEvaluation wineEvaluation;
-	
+
 	private StandEvaluation standEvaluation;
 
 	public EvaluationController(MainController mainController, Wine wine) {
@@ -142,9 +145,12 @@ public class EvaluationController implements Initializable {
 		wines_ChoiceBox.setValue(wine);
 		wines_ChoiceBox.getSelectionModel().selectedItemProperty().addListener(changeWineListener);
 		evaluateWine_Button.addEventHandler(ActionEvent.ANY, evaluateWineHandler);
-
+		evaluateWine_Button.addEventHandler(ActionEvent.ANY, evaluateStandHandler);
 		update();
 
+		if (chechIfStandEvaluated()) {
+			review_TextArea.setText(standEvaluation.getReview().get());
+		}
 	}
 
 	ChangeListener<Wine> changeWineListener = new ChangeListener<Wine>() {
@@ -155,7 +161,7 @@ public class EvaluationController implements Initializable {
 	};
 
 	private void update() {
-		if (chechIfEvaluated()) {
+		if (chechIfWineEvaluated()) {
 			loadWineEvaluation();
 			// this.wine = wines_ChoiceBox.getValue();
 		} else {
@@ -176,13 +182,34 @@ public class EvaluationController implements Initializable {
 			}
 
 			if (mainCon.getStage().getScene().focusOwnerProperty().get().equals(evaluateWine_Button)) {
-				if (standEvaluation == null) {
-					
+				if (standEvaluation != null) {
+					if (!review_TextArea.getText().equals(standEvaluation.getReview().get())) {
+						standEvaluation.setReview(review_TextArea.getText());
+						ChangeStandEvaluation changeStandEvaluation = new ChangeStandEvaluation(standEvaluation);
+						new Thread(changeStandEvaluation).start();
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setTitle("Success");
+						alert.setHeaderText(null);
+						alert.setContentText("The Evaluation was Changed");
+
+						alert.showAndWait();
+					}
+				}else{
+					standEvaluation = new StandEvaluation(wine.getStand().get(), mainCon.getSession().getCurrentUser(), review_TextArea.getText());
+					AddStandEvaluation addStandEvaluation = new AddStandEvaluation(standEvaluation);
+					new Thread(addStandEvaluation).start();
+					Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setTitle("Success");
+					alert.setHeaderText(null);
+					alert.setContentText("The Stand was Added");
+
+					alert.showAndWait();
 				}
+				
 			}
-	}
+		}
 	};
-	
+
 	final EventHandler<Event> evaluateWineHandler = new EventHandler<Event>() {
 		@Override
 		public void handle(Event event) {
@@ -227,7 +254,7 @@ public class EvaluationController implements Initializable {
 		}
 	};
 
-	private boolean chechIfEvaluated() {
+	private boolean chechIfWineEvaluated() {
 		WineEvaluationDAO wineEvaluationDAO = new WineEvaluationDAO();
 		List<WineEvaluation> listWineEvaluation;
 		try {
@@ -240,6 +267,28 @@ public class EvaluationController implements Initializable {
 			for (WineEvaluation wineEvaluation : listWineEvaluation) {
 				if (wineEvaluation.getUser().get().getUserID() == mainCon.getSession().getCurrentUser().getUserID()) {
 					this.wineEvaluation = wineEvaluation;
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	private boolean chechIfStandEvaluated() {
+		StandEvaluationDAO standEvaluationDAO = new StandEvaluationDAO();
+		List<StandEvaluation> listStandEvaluation;
+		try {
+			listStandEvaluation = standEvaluationDAO
+					.getStandEvaluationByStand(wines_ChoiceBox.getValue().getStand().get());
+			
+		} catch (SQLException e) {
+			listStandEvaluation = null;
+			e.printStackTrace();
+		}
+		if (!listStandEvaluation.isEmpty()) {
+			for (StandEvaluation standEvaluation : listStandEvaluation) {
+				if (standEvaluation.getUser().get().getUserID() == mainCon.getSession().getCurrentUser().getUserID()) {
+					this.standEvaluation = standEvaluation;
 					return true;
 				}
 			}

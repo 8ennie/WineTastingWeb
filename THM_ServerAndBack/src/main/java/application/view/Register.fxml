@@ -14,38 +14,38 @@
 
 <AnchorPane fx:id="register_AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #843640;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
             <GridPane BorderPane.alignment="CENTER">
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="133.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="513.0" minWidth="10.0" prefWidth="467.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="467.0" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="25.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="60.0" minHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="25.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="60.0" minHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="25.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="60.0" minHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label text="Username:" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Label fx:id="userName_Lable" text="Username:" textFill="#a19b9b" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
                      <GridPane.margin>
-                        <Insets />
+                        <Insets left="15.0" />
                      </GridPane.margin>
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label text="Password:" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Label fx:id="password1_Lable" text="Password:" textFill="#a19b9b" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                      <GridPane.margin>
-                        <Insets />
+                        <Insets left="15.0" />
                      </GridPane.margin>
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="userName_TextField" GridPane.columnIndex="1">
+                  <TextField fx:id="userName_TextField" promptText="Username" GridPane.rowIndex="1">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -53,7 +53,7 @@
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </GridPane.margin>
                   </TextField>
-                  <PasswordField fx:id="password1_PasswordField" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <PasswordField fx:id="password1_PasswordField" promptText="Password" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </GridPane.margin>
@@ -61,7 +61,7 @@
                         <Font size="15.0" />
                      </font>
                   </PasswordField>
-                  <PasswordField fx:id="password2_PasswordField" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <PasswordField fx:id="password2_PasswordField" promptText="Password" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </GridPane.margin>
@@ -69,35 +69,10 @@
                         <Font size="15.0" />
                      </font>
                   </PasswordField>
-                  <Label fx:id="error_Lable" text="Error Message" textFill="RED" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                  <GridPane GridPane.columnIndex="1" GridPane.rowIndex="4">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                     <children>
-                        <Button fx:id="back_Button" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Back" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                           <GridPane.margin>
-                              <Insets bottom="10.0" />
-                           </GridPane.margin>
-                        </Button>
-                        <Button fx:id="register_Button" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Register" GridPane.columnIndex="1" GridPane.halignment="CENTER">
-                           <GridPane.margin>
-                              <Insets bottom="10.0" />
-                           </GridPane.margin>
-                        </Button>
-                     </children>
-                  </GridPane>
-                  <Label text="Password:" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                  <Label fx:id="password2_Lable" text="Password:" textFill="#a19b9b" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                      <font>
                         <Font size="20.0" />
                      </font>
-                  </Label>
-                  <Label fx:id="lblError" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets left="15.0" />
                      </GridPane.margin>
@@ -106,15 +81,31 @@
             </GridPane>
          </center>
          <top>
-            <Label style="-fx-border-color: black;" text="Register" BorderPane.alignment="CENTER">
+            <Label fx:id="register_Lable" text="Register" textFill="WHITE" BorderPane.alignment="CENTER">
                <font>
-                  <Font size="50.0" />
+                  <Font name="Lucida Handwriting Italic" size="50.0" />
                </font>
                <BorderPane.margin>
                   <Insets top="5.0" />
                </BorderPane.margin>
             </Label>
          </top>
+         <bottom>
+            <AnchorPane prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #60282e;" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="back_Button" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #a84552;" text="Back" textFill="#b5b5b5" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="350.0" AnchorPane.topAnchor="15.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="register_Button" defaultButton="true" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #a84552;" text="Register" textFill="#b5b5b5" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="15.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </bottom>
       </BorderPane>
    </children>
 </AnchorPane>
