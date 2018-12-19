@@ -3,87 +3,80 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="search_AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #843640;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <GridPane BorderPane.alignment="CENTER">
+            <VBox BorderPane.alignment="CENTER">
                <BorderPane.margin>
-                  <Insets top="5.0" />
+                  <Insets />
                </BorderPane.margin>
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-               </rowConstraints>
                <children>
-                  <Label style="-fx-border-color: black;" text="Search" textAlignment="CENTER" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                     <font>
-                        <Font size="50.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="userName_Lable" text="Username" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets right="15.0" top="5.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <Button fx:id="logOut_Button" mnemonicParsing="false" text="Log Out" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
-                     <GridPane.margin>
-                        <Insets bottom="5.0" right="15.0" />
-                     </GridPane.margin>
-                  </Button>
-                  <Button fx:id="back_Button" mnemonicParsing="false" prefHeight="50.0" prefWidth="75.0" text="&lt; Back">
-                     <GridPane.margin>
-                        <Insets left="15.0" />
-                     </GridPane.margin>
-                  </Button>
+                  <MenuBar fx:id="options_MenuBar" style="-fx-background-color: #be626d;">
+                     <menus>
+                        <Menu fx:id="settings_Menu" mnemonicParsing="false" text="Settings">
+                           <items>
+                              <Menu fx:id="language_Menu" mnemonicParsing="false" text="Language">
+                                 <items>
+                                    <MenuItem fx:id="german_MenuItem" mnemonicParsing="false" text="Deutsch" />
+                                    <MenuItem fx:id="english_MenuItem" mnemonicParsing="false" text="English" />
+                                 </items>
+                              </Menu>
+                           </items>
+                        </Menu>
+                        <Menu fx:id="user_Menu" mnemonicParsing="false" text="User">
+                           <items>
+                              <MenuItem fx:id="logOut_MenuItem" mnemonicParsing="false" text="Log Out" />
+                           </items>
+                        </Menu>
+                     </menus>
+                  </MenuBar>
+                  <GridPane prefHeight="86.0" prefWidth="600.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label fx:id="searchTitle_Lable" prefHeight="68.0" text="Search" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <font>
+                              <Font name="Lucida Handwriting Italic" size="50.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="back_Button" mnemonicParsing="false" prefHeight="50.0" prefWidth="75.0" style="-fx-background-color: #a84552;" text="&lt; Back" textFill="#b5b5b5">
+                           <GridPane.margin>
+                              <Insets left="15.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <ImageView fx:id="search_ImageView" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                     </children>
+                  </GridPane>
                </children>
-            </GridPane>
+            </VBox>
          </top>
          <center>
-            <BorderPane BorderPane.alignment="CENTER">
+            <BorderPane prefHeight="212.0" prefWidth="570.0" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets left="15.0" right="15.0" top="15.0" />
                </BorderPane.margin>
-               <top>
-                  <GridPane style="-fx-background-color: red;" BorderPane.alignment="CENTER">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="91.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="476.0" minWidth="10.0" prefWidth="422.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Label text="Search:">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="search_TextField" prefHeight="25.0" prefWidth="435.0" GridPane.columnIndex="1">
-                           <GridPane.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </GridPane.margin>
-                        </TextField>
-                     </children>
-                  </GridPane>
-               </top>
                <center>
                   <TableView fx:id="result_TableView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <columns>
@@ -97,6 +90,29 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy></TableView>
                </center>
+               <bottom>
+                  <GridPane style="-fx-background-color: #a84552; -fx-border-color: black;" BorderPane.alignment="CENTER">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="91.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="476.0" minWidth="10.0" prefWidth="422.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label fx:id="search_Lable" text="Search:" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="search_TextField" prefHeight="25.0" prefWidth="435.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <GridPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                     </children>
+                  </GridPane>
+               </bottom>
             </BorderPane>
          </center>
          <bottom>
@@ -111,12 +127,12 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button fx:id="chooseStand_Button" mnemonicParsing="false" text="Choose Stand" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                  <Button fx:id="chooseStand_Button" mnemonicParsing="false" style="-fx-background-color: #a84552;" text="Choose Stand" textFill="#b5b5b5" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="editStand_Button" mnemonicParsing="false" text="Edit Stands" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Button fx:id="editStand_Button" mnemonicParsing="false" style="-fx-background-color: #a84552;" text="Edit Stands" textFill="#b5b5b5" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                </children>
             </GridPane>
          </bottom>

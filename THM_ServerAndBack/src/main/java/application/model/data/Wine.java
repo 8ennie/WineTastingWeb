@@ -23,6 +23,7 @@ public class Wine {
 
 	@Override
 	public String toString() {
+		
 	    return this.getName().get();
 	}
 	

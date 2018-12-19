@@ -187,23 +187,11 @@ public class EvaluationController implements Initializable {
 						standEvaluation.setReview(review_TextArea.getText());
 						ChangeStandEvaluation changeStandEvaluation = new ChangeStandEvaluation(standEvaluation);
 						new Thread(changeStandEvaluation).start();
-						Alert alert = new Alert(AlertType.INFORMATION);
-						alert.setTitle("Success");
-						alert.setHeaderText(null);
-						alert.setContentText("The Evaluation was Changed");
-
-						alert.showAndWait();
 					}
 				}else{
 					standEvaluation = new StandEvaluation(wine.getStand().get(), mainCon.getSession().getCurrentUser(), review_TextArea.getText());
 					AddStandEvaluation addStandEvaluation = new AddStandEvaluation(standEvaluation);
 					new Thread(addStandEvaluation).start();
-					Alert alert = new Alert(AlertType.INFORMATION);
-					alert.setTitle("Success");
-					alert.setHeaderText(null);
-					alert.setContentText("The Stand was Added");
-
-					alert.showAndWait();
 				}
 				
 			}

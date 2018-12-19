@@ -63,7 +63,10 @@
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </GridPane.margin>
                   </PasswordField>
-                  <Label fx:id="lblError" textFill="RED" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                  <Label fx:id="lblError" textFill="RED" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
                </children>
                <BorderPane.margin>
                   <Insets />

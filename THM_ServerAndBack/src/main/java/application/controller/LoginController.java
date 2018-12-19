@@ -3,7 +3,6 @@ package application.controller;
  * Sample Skeleton for 'Login.fxml' Controller Class
  */
 
-import java.io.File;
 import java.net.URL;
 import java.util.Locale;
 import java.util.PropertyResourceBundle;

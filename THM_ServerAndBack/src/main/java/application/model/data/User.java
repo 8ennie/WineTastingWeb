@@ -41,8 +41,6 @@ public class User {
 	
 	
 	public boolean isEqualTo(User userToCompare) {
-		System.out.println("X: " + this);
-		System.out.println("X: " + userToCompare);
 		if (this.USERNAME.equals(userToCompare.getUsername()) && this.PW.equals(userToCompare.getPassword())) {
 			return true;
 		}else {

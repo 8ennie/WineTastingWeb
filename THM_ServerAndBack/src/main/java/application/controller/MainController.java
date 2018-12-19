@@ -70,8 +70,9 @@ public class MainController {
 	
 	public void gotoSearch(SearchStatus searchStatus) {
 		try {
-			this.replaceSceneContent("/application/view/Search.fxml", new SearchController(this,searchStatus));
-
+			SearchController searchController = new SearchController(this,searchStatus);
+			this.replaceSceneContent("/application/view/Search.fxml", searchController);
+			searchController.changeLanguage(PropertyResourceBundle.getBundle("Search",language));
 		} catch (Exception ex) {
 			System.out.println("Search: " + ex.getMessage());
 		}
@@ -79,8 +80,9 @@ public class MainController {
 	
 	public void gotoStands() {
 		try {
-			this.replaceSceneContent("/application/view/Stands.fxml", new StandsController(this));
-
+			StandsController standsController = new StandsController(this);
+			this.replaceSceneContent("/application/view/Stands.fxml", standsController);
+			standsController.changeLanguage(PropertyResourceBundle.getBundle("Stands",language));
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			System.out.println("Stands: " + ex.getMessage());
@@ -107,7 +109,9 @@ public class MainController {
 	
 	public void gotoOptions() {
 		try {
-			this.replaceSceneContent("/application/view/Options.fxml", new OptionsController(this));
+			OptionsController optionsController = new OptionsController(this);
+			this.replaceSceneContent("/application/view/Options.fxml", optionsController);
+			optionsController.changeLanguage(PropertyResourceBundle.getBundle("Option",language));
 
 		} catch (Exception ex) {
 			ex.printStackTrace();

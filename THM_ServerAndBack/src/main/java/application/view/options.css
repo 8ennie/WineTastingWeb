@@ -1,0 +1,12 @@
+@charset "ISO-8859-1";
+
+
+.menu .label
+{
+    -fx-text-fill: black;
+}
+
+.modItem
+{
+    -fx-color: black;
+}
