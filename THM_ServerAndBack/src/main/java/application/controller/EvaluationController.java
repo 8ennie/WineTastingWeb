@@ -33,6 +33,9 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
@@ -54,20 +57,50 @@ public class EvaluationController implements Initializable {
 	@FXML // fx:id="evaluate_AnchorPane"
 	private AnchorPane evaluate_AnchorPane; // Value injected by FXMLLoader
 
-	@FXML // fx:id="userName_Lable"
-	private Label userName_Lable; // Value injected by FXMLLoader
+	@FXML // fx:id="options_MenuBar"
+	private MenuBar options_MenuBar; // Value injected by FXMLLoader
 
-	@FXML // fx:id="logOut_Button"
-	private Button logOut_Button; // Value injected by FXMLLoader
+	@FXML // fx:id="settings_Menu"
+	private Menu settings_Menu; // Value injected by FXMLLoader
+
+	@FXML // fx:id="language_Menu"
+	private Menu language_Menu; // Value injected by FXMLLoader
+
+	@FXML // fx:id="german_MenuItem"
+	private MenuItem german_MenuItem; // Value injected by FXMLLoader
+
+	@FXML // fx:id="english_MenuItem"
+	private MenuItem english_MenuItem; // Value injected by FXMLLoader
+
+	@FXML // fx:id="user_Menu"
+	private Menu user_Menu; // Value injected by FXMLLoader
+
+	@FXML // fx:id="logOut_MenuItem"
+	private MenuItem logOut_MenuItem; // Value injected by FXMLLoader
+
+	@FXML // fx:id="evaluateTitle_Lable"
+	private Label evaluateTitle_Lable; // Value injected by FXMLLoader
 
 	@FXML // fx:id="goBack_Button"
 	private Button goBack_Button; // Value injected by FXMLLoader
 
-	@FXML // fx:id="standName_Lable"
-	private Label standName_Lable; // Value injected by FXMLLoader
-
 	@FXML // fx:id="wines_ChoiceBox"
 	private ChoiceBox<Wine> wines_ChoiceBox; // Value injected by FXMLLoader
+
+	@FXML // fx:id="wine_Lable"
+	private Label wine_Lable; // Value injected by FXMLLoader
+
+	@FXML // fx:id="sweet_Lable"
+	private Label sweet_Lable; // Value injected by FXMLLoader
+
+	@FXML // fx:id="salty_Lable"
+	private Label salty_Lable; // Value injected by FXMLLoader
+
+	@FXML // fx:id="bitter_Lable"
+	private Label bitter_Lable; // Value injected by FXMLLoader
+
+	@FXML // fx:id="sour_Lable"
+	private Label sour_Lable; // Value injected by FXMLLoader
 
 	@FXML // fx:id="sweet_Slider"
 	private Slider sweet_Slider; // Value injected by FXMLLoader
@@ -80,6 +113,12 @@ public class EvaluationController implements Initializable {
 
 	@FXML // fx:id="sour_Slider"
 	private Slider sour_Slider; // Value injected by FXMLLoader
+
+	@FXML // fx:id="standName_Lable"
+	private Label standName_Lable; // Value injected by FXMLLoader
+
+	@FXML // fx:id="standReview_Lable"
+	private Label standReview_Lable; // Value injected by FXMLLoader
 
 	@FXML // fx:id="review_TextArea"
 	private TextArea review_TextArea; // Value injected by FXMLLoader
@@ -104,26 +143,31 @@ public class EvaluationController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		assert evaluate_AnchorPane != null : "fx:id=\"evaluate_AnchorPane\" was not injected: check your FXML file 'Evaluate.fxml'.";
-		assert userName_Lable != null : "fx:id=\"userName_Lable\" was not injected: check your FXML file 'Evaluate.fxml'.";
-		assert logOut_Button != null : "fx:id=\"logOut_Button\" was not injected: check your FXML file 'Evaluate.fxml'.";
+		assert options_MenuBar != null : "fx:id=\"options_MenuBar\" was not injected: check your FXML file 'Evaluate.fxml'.";
+		assert settings_Menu != null : "fx:id=\"settings_Menu\" was not injected: check your FXML file 'Evaluate.fxml'.";
+		assert language_Menu != null : "fx:id=\"language_Menu\" was not injected: check your FXML file 'Evaluate.fxml'.";
+		assert german_MenuItem != null : "fx:id=\"german_MenuItem\" was not injected: check your FXML file 'Evaluate.fxml'.";
+		assert english_MenuItem != null : "fx:id=\"english_MenuItem\" was not injected: check your FXML file 'Evaluate.fxml'.";
+		assert user_Menu != null : "fx:id=\"user_Menu\" was not injected: check your FXML file 'Evaluate.fxml'.";
+		assert logOut_MenuItem != null : "fx:id=\"logOut_MenuItem\" was not injected: check your FXML file 'Evaluate.fxml'.";
+		assert evaluateTitle_Lable != null : "fx:id=\"evaluateTitle_Lable\" was not injected: check your FXML file 'Evaluate.fxml'.";
 		assert goBack_Button != null : "fx:id=\"goBack_Button\" was not injected: check your FXML file 'Evaluate.fxml'.";
-		assert standName_Lable != null : "fx:id=\"standName_Lable\" was not injected: check your FXML file 'Evaluate.fxml'.";
 		assert wines_ChoiceBox != null : "fx:id=\"wines_ChoiceBox\" was not injected: check your FXML file 'Evaluate.fxml'.";
+		assert wine_Lable != null : "fx:id=\"wine_Lable\" was not injected: check your FXML file 'Evaluate.fxml'.";
+		assert sweet_Lable != null : "fx:id=\"sweet_Lable\" was not injected: check your FXML file 'Evaluate.fxml'.";
+		assert salty_Lable != null : "fx:id=\"salty_Lable\" was not injected: check your FXML file 'Evaluate.fxml'.";
+		assert bitter_Lable != null : "fx:id=\"bitter_Lable\" was not injected: check your FXML file 'Evaluate.fxml'.";
+		assert sour_Lable != null : "fx:id=\"sour_Lable\" was not injected: check your FXML file 'Evaluate.fxml'.";
 		assert sweet_Slider != null : "fx:id=\"sweet_Slider\" was not injected: check your FXML file 'Evaluate.fxml'.";
 		assert salty_Slider != null : "fx:id=\"salty_Slider\" was not injected: check your FXML file 'Evaluate.fxml'.";
 		assert bitter_Slider != null : "fx:id=\"bitter_Slider\" was not injected: check your FXML file 'Evaluate.fxml'.";
 		assert sour_Slider != null : "fx:id=\"sour_Slider\" was not injected: check your FXML file 'Evaluate.fxml'.";
+		assert standName_Lable != null : "fx:id=\"standName_Lable\" was not injected: check your FXML file 'Evaluate.fxml'.";
+		assert standReview_Lable != null : "fx:id=\"standReview_Lable\" was not injected: check your FXML file 'Evaluate.fxml'.";
 		assert review_TextArea != null : "fx:id=\"review_TextArea\" was not injected: check your FXML file 'Evaluate.fxml'.";
 		assert evaluateWine_Button != null : "fx:id=\"evaluateWine_Button\" was not injected: check your FXML file 'Evaluate.fxml'.";
 
-		userName_Lable.setText(mainCon.getSession().getCurrentUser().getUsername());
 
-		logOut_Button.addEventFilter(ActionEvent.ANY, new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				mainCon.logOut();
-			}
-		});
 
 		goBack_Button.addEventFilter(ActionEvent.ANY, new EventHandler<ActionEvent>() {
 			@Override
@@ -188,12 +232,13 @@ public class EvaluationController implements Initializable {
 						ChangeStandEvaluation changeStandEvaluation = new ChangeStandEvaluation(standEvaluation);
 						new Thread(changeStandEvaluation).start();
 					}
-				}else{
-					standEvaluation = new StandEvaluation(wine.getStand().get(), mainCon.getSession().getCurrentUser(), review_TextArea.getText());
+				} else {
+					standEvaluation = new StandEvaluation(wine.getStand().get(), mainCon.getSession().getCurrentUser(),
+							review_TextArea.getText());
 					AddStandEvaluation addStandEvaluation = new AddStandEvaluation(standEvaluation);
 					new Thread(addStandEvaluation).start();
 				}
-				
+
 			}
 		}
 	};
@@ -268,7 +313,7 @@ public class EvaluationController implements Initializable {
 		try {
 			listStandEvaluation = standEvaluationDAO
 					.getStandEvaluationByStand(wines_ChoiceBox.getValue().getStand().get());
-			
+
 		} catch (SQLException e) {
 			listStandEvaluation = null;
 			e.printStackTrace();

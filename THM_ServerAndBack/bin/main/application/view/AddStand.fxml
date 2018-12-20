@@ -3,56 +3,70 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="addStand_AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #843640;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <GridPane BorderPane.alignment="CENTER">
+            <VBox BorderPane.alignment="CENTER">
                <BorderPane.margin>
-                  <Insets top="5.0" />
+                  <Insets />
                </BorderPane.margin>
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-               </rowConstraints>
                <children>
-                  <Label style="-fx-border-color: black;" text="Add Stands" textAlignment="CENTER" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                     <font>
-                        <Font size="50.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="userName_Lable" text="Username" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets right="15.0" top="5.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <Button fx:id="logOut_Button" mnemonicParsing="false" text="Log Out" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
-                     <GridPane.margin>
-                        <Insets bottom="5.0" right="15.0" />
-                     </GridPane.margin>
-                  </Button>
-                  <Button fx:id="back_Button" mnemonicParsing="false" prefHeight="50.0" prefWidth="75.0" text="&lt; Back">
-                     <GridPane.margin>
-                        <Insets left="15.0" />
-                     </GridPane.margin>
-                  </Button>
+                  <MenuBar fx:id="options_MenuBar" style="-fx-background-color: #be626d;">
+                     <menus>
+                        <Menu fx:id="settings_Menu" mnemonicParsing="false" text="Settings">
+                           <items>
+                              <Menu fx:id="language_Menu" mnemonicParsing="false" text="Language">
+                                 <items>
+                                    <MenuItem fx:id="german_MenuItem" mnemonicParsing="false" text="Deutsch" />
+                                    <MenuItem fx:id="english_MenuItem" mnemonicParsing="false" text="English" />
+                                 </items>
+                              </Menu>
+                           </items>
+                        </Menu>
+                        <Menu fx:id="user_Menu" mnemonicParsing="false" text="User">
+                           <items>
+                              <MenuItem fx:id="logOut_MenuItem" mnemonicParsing="false" text="Log Out" />
+                           </items>
+                        </Menu>
+                     </menus>
+                  </MenuBar>
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label fx:id="addStandTitel_Lable" text="Add Stands" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <font>
+                              <Font name="Lucida Handwriting Italic" size="50.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="back_Button" mnemonicParsing="false" prefHeight="50.0" prefWidth="75.0" style="-fx-background-color: #a84552;" text="&lt; Back" textFill="#b5b5b5">
+                           <GridPane.margin>
+                              <Insets left="15.0" />
+                           </GridPane.margin>
+                        </Button>
+                     </children>
+                  </GridPane>
                </children>
-            </GridPane>
+            </VBox>
          </top>
          <right>
             <GridPane prefHeight="320.0" prefWidth="598.0" BorderPane.alignment="CENTER">
@@ -67,7 +81,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label text="Stand Name:" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Label fx:id="standName_Lable" text="Stand Name:" textFill="#a19b9b" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
@@ -75,7 +89,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label text="Stand Owner:" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                  <Label fx:id="standOwner_Lable" text="Stand Owner:" textFill="#a19b9b" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
@@ -107,7 +121,7 @@
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </GridPane.margin>
                   </TextField>
-                  <Label text="Stand Location:" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Label fx:id="standLocation_Lable" text="Stand Location:" textFill="#a19b9b" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -115,7 +129,7 @@
                         <Insets left="15.0" />
                      </GridPane.margin>
                   </Label>
-                  <Button fx:id="addStand_Button" mnemonicParsing="false" text="Add Stand" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                  <Button fx:id="addStand_Button" mnemonicParsing="false" style="-fx-background-color: #a84552;" text="Add Stand" textFill="#b5b5b5" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>

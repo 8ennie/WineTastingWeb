@@ -13,6 +13,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 
 import java.util.ArrayList;
@@ -20,6 +24,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import application.model.data.SearchStatus;
+import application.model.data.Stand;
+import application.model.data.StandEvaluation;
+import application.model.data.StandEvaluationDAO;
 import application.model.data.Wine;
 import application.model.data.WineDAO;
 import application.model.data.WineEvaluation;
@@ -37,17 +44,47 @@ public class ViewEvaluationController implements Initializable {
 	@FXML // fx:id="viewEvaluation_AnchorPane"
 	private AnchorPane viewEvaluation_AnchorPane; // Value injected by FXMLLoader
 
-	@FXML // fx:id="userName_Lable"
-	private Label userName_Lable; // Value injected by FXMLLoader
+	@FXML // fx:id="options_MenuBar"
+	private MenuBar options_MenuBar; // Value injected by FXMLLoader
 
-	@FXML // fx:id="logOut_Button"
-	private Button logOut_Button; // Value injected by FXMLLoader
+	@FXML // fx:id="settings_Menu"
+	private Menu settings_Menu; // Value injected by FXMLLoader
 
-	@FXML // fx:id="standName_Lable"
-	private Label standName_Lable; // Value injected by FXMLLoader
+	@FXML // fx:id="language_Menu"
+	private Menu language_Menu; // Value injected by FXMLLoader
+
+	@FXML // fx:id="german_MenuItem"
+	private MenuItem german_MenuItem; // Value injected by FXMLLoader
+
+	@FXML // fx:id="english_MenuItem"
+	private MenuItem english_MenuItem; // Value injected by FXMLLoader
+
+	@FXML // fx:id="user_Menu"
+	private Menu user_Menu; // Value injected by FXMLLoader
+
+	@FXML // fx:id="logOut_MenuItem"
+	private MenuItem logOut_MenuItem; // Value injected by FXMLLoader
+
+	@FXML // fx:id="viewEvaluationTitle_Lable"
+	private Label viewEvaluationTitle_Lable; // Value injected by FXMLLoader
 
 	@FXML // fx:id="wines_ChoiceBox"
 	private ChoiceBox<Wine> wines_ChoiceBox; // Value injected by FXMLLoader
+
+	@FXML // fx:id="wine_Lable"
+	private Label wine_Lable; // Value injected by FXMLLoader
+
+	@FXML // fx:id="sweet_Lable"
+	private Label sweet_Lable; // Value injected by FXMLLoader
+
+	@FXML // fx:id="salty_Lable"
+	private Label salty_Lable; // Value injected by FXMLLoader
+
+	@FXML // fx:id="bitter_Lable"
+	private Label bitter_Lable; // Value injected by FXMLLoader
+
+	@FXML // fx:id="sour_Lable"
+	private Label sour_Lable; // Value injected by FXMLLoader
 
 	@FXML // fx:id="sweetAVG_Lable"
 	private Label sweetAVG_Lable; // Value injected by FXMLLoader
@@ -73,8 +110,14 @@ public class ViewEvaluationController implements Initializable {
 	@FXML // fx:id="sourOWN_Lable"
 	private Label sourOWN_Lable; // Value injected by FXMLLoader
 
-	@FXML // fx:id="standRieview_Lable"
-	private Label standRieview_Lable; // Value injected by FXMLLoader
+	@FXML // fx:id="standName_Lable"
+	private Label standName_Lable; // Value injected by FXMLLoader
+
+	@FXML // fx:id="standReview_Lable"
+	private Label standReview_Lable; // Value injected by FXMLLoader
+
+	@FXML // fx:id="standReview_TextArea"
+	private TextArea standReview_TextArea; // Value injected by FXMLLoader
 
 	@FXML // fx:id="finished_Button"
 	private Button finished_Button; // Value injected by FXMLLoader
@@ -83,21 +126,34 @@ public class ViewEvaluationController implements Initializable {
 
 	private Wine wine;
 
+	private final Stand stand;
+
 	private List<WineEvaluation> wineEvaluations;
 
 	public ViewEvaluationController(MainController mainController, Wine wine) {
 		// TODO Auto-generated constructor stub
 		this.mainCon = mainController;
 		this.wine = wine;
+		this.stand = wine.getStand().get();
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		assert viewEvaluation_AnchorPane != null : "fx:id=\"viewEvaluation_AnchorPane\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
-		assert userName_Lable != null : "fx:id=\"userName_Lable\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
-		assert logOut_Button != null : "fx:id=\"logOut_Button\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
-		assert standName_Lable != null : "fx:id=\"standName_Lable\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
+		assert options_MenuBar != null : "fx:id=\"options_MenuBar\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
+		assert settings_Menu != null : "fx:id=\"settings_Menu\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
+		assert language_Menu != null : "fx:id=\"language_Menu\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
+		assert german_MenuItem != null : "fx:id=\"german_MenuItem\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
+		assert english_MenuItem != null : "fx:id=\"english_MenuItem\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
+		assert user_Menu != null : "fx:id=\"user_Menu\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
+		assert logOut_MenuItem != null : "fx:id=\"logOut_MenuItem\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
+		assert viewEvaluationTitle_Lable != null : "fx:id=\"viewEvaluationTitle_Lable\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
 		assert wines_ChoiceBox != null : "fx:id=\"wines_ChoiceBox\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
+		assert wine_Lable != null : "fx:id=\"wine_Lable\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
+		assert sweet_Lable != null : "fx:id=\"sweet_Lable\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
+		assert salty_Lable != null : "fx:id=\"salty_Lable\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
+		assert bitter_Lable != null : "fx:id=\"bitter_Lable\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
+		assert sour_Lable != null : "fx:id=\"sour_Lable\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
 		assert sweetAVG_Lable != null : "fx:id=\"sweetAVG_Lable\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
 		assert saltyAVG_Lable != null : "fx:id=\"saltyAVG_Lable\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
 		assert bitterAVG_Lable != null : "fx:id=\"bitterAVG_Lable\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
@@ -106,9 +162,10 @@ public class ViewEvaluationController implements Initializable {
 		assert saltyOWN_Lable != null : "fx:id=\"saltyOWN_Lable\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
 		assert bitterOWN_Lable != null : "fx:id=\"bitterOWN_Lable\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
 		assert sourOWN_Lable != null : "fx:id=\"sourOWN_Lable\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
-		assert standRieview_Lable != null : "fx:id=\"standRieview_Lable\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
+		assert standName_Lable != null : "fx:id=\"standName_Lable\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
+		assert standReview_Lable != null : "fx:id=\"standReview_Lable\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
+		assert standReview_TextArea != null : "fx:id=\"standReview_TextArea\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
 		assert finished_Button != null : "fx:id=\"finished_Button\" was not injected: check your FXML file 'ViewEvaluation.fxml'.";
-		userName_Lable.setText(mainCon.getSession().getCurrentUser().getUsername());
 		standName_Lable.setText("Stand Name: " + wine.getStand().get().getStandName().get());
 
 		ObservableList<Wine> standWineList = FXCollections.observableArrayList();
@@ -127,14 +184,10 @@ public class ViewEvaluationController implements Initializable {
 				mainCon.gotoSearch(SearchStatus.ViewEvaluation);
 			}
 		});
-		logOut_Button.addEventFilter(ActionEvent.ANY, new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				mainCon.logOut();
-			}
-		});
 
 		update();
+
+		loadStandReview();
 
 		wines_ChoiceBox.getSelectionModel().selectedItemProperty().addListener(changeWineListener);
 	}
@@ -145,6 +198,30 @@ public class ViewEvaluationController implements Initializable {
 			update();
 		}
 	};
+
+	private void loadStandReview() {
+		List<StandEvaluation> standEvaluationsList = null;
+		try {
+			standEvaluationsList = new StandEvaluationDAO().getStandEvaluationByStand(stand);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (standEvaluationsList != null) {
+			for (StandEvaluation standEvaluation : standEvaluationsList) {
+				if (standReview_TextArea.getText().isEmpty()) {
+					standReview_TextArea.setText(standEvaluation.getUser().get().getUsername() + ": \t\t"
+							+ standEvaluation.getReview().get());
+				} else {
+					standReview_TextArea.setText(
+							standReview_TextArea.getText() + "\n" + standEvaluation.getUser().get().getUsername()
+									+ ": \t\t" + standEvaluation.getReview().get());
+				}
+			}
+
+		}
+
+	}
 
 	private void update() {
 		this.wine = wines_ChoiceBox.getValue();
@@ -161,7 +238,7 @@ public class ViewEvaluationController implements Initializable {
 				saltyOWN_Lable.setText(String.valueOf(ownWineEvaluation.getSalty().get()));
 				bitterOWN_Lable.setText(String.valueOf(ownWineEvaluation.getBitter().get()));
 				sourOWN_Lable.setText(String.valueOf(ownWineEvaluation.getSour().get()));
-			}else{
+			} else {
 				sweetOWN_Lable.setText("Not Evaluated");
 				saltyOWN_Lable.setText("Not Evaluated");
 				bitterOWN_Lable.setText("Not Evaluated");
@@ -177,10 +254,10 @@ public class ViewEvaluationController implements Initializable {
 				bitterAVG.add(wineEvaluation.getBitter().get());
 				sourAVG.add(wineEvaluation.getSour().get());
 			}
-				sweetAVG_Lable.setText(String.valueOf(getAVG(sweetAVG)));
-				saltyAVG_Lable.setText(String.valueOf(getAVG(saltyAVG)));
-				bitterAVG_Lable.setText(String.valueOf(getAVG(bitterAVG)));
-				sourAVG_Lable.setText(String.valueOf(getAVG(sourAVG)));
+			sweetAVG_Lable.setText(String.valueOf(getAVG(sweetAVG)));
+			saltyAVG_Lable.setText(String.valueOf(getAVG(saltyAVG)));
+			bitterAVG_Lable.setText(String.valueOf(getAVG(bitterAVG)));
+			sourAVG_Lable.setText(String.valueOf(getAVG(sourAVG)));
 		} else {
 			sweetOWN_Lable.setText("Not Evaluated");
 			saltyOWN_Lable.setText("Not Evaluated");
@@ -196,12 +273,12 @@ public class ViewEvaluationController implements Initializable {
 	private double getAVG(List<Integer> list) {
 		double avg = 0;
 		for (Integer integer : list) {
-			avg = avg + (double)integer;
+			avg = avg + (double) integer;
 		}
-		avg = avg / (double)list.size();
+		avg = avg / (double) list.size();
 		return avg;
 	}
-	
+
 	private WineEvaluation getOwnEvaluated() {
 		for (WineEvaluation wineEvaluation : wineEvaluations) {
 			if (wineEvaluation.getUser().get().getUserID() == mainCon.getSession().getCurrentUser().getUserID()) {
