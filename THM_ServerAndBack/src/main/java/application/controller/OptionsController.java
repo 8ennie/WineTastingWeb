@@ -53,8 +53,8 @@ public class OptionsController implements Initializable {
 	    @FXML // fx:id="viewEvaluation_Button"
 	    private Button viewEvaluation_Button; // Value injected by FXMLLoader
 
-	    @FXML // fx:id="viewWÉvaluation_ImageView"
-	    private ImageView viewWÉvaluation_ImageView; // Value injected by FXMLLoader
+	    @FXML // fx:id="viewEvaluation_ImageView"
+	    private ImageView viewEvaluation_ImageView; // Value injected by FXMLLoader
 
 	    @FXML // fx:id="options_MenuBar"
 	    private MenuBar options_MenuBar; // Value injected by FXMLLoader
@@ -96,7 +96,7 @@ public class OptionsController implements Initializable {
 	        assert evaluation_Button != null : "fx:id=\"evaluation_Button\" was not injected: check your FXML file 'Options.fxml'.";
 	        assert evaluate_ImageView != null : "fx:id=\"evaluate_ImageView\" was not injected: check your FXML file 'Options.fxml'.";
 	        assert viewEvaluation_Button != null : "fx:id=\"viewEvaluation_Button\" was not injected: check your FXML file 'Options.fxml'.";
-	        assert viewWÉvaluation_ImageView != null : "fx:id=\"viewWÉvaluation_ImageView\" was not injected: check your FXML file 'Options.fxml'.";
+	        assert viewEvaluation_ImageView != null : "fx:id=\"viewEvaluation_ImageView\" was not injected: check your FXML file 'Options.fxml'.";
 	        assert options_MenuBar != null : "fx:id=\"options_MenuBar\" was not injected: check your FXML file 'Options.fxml'.";
 	        assert settings_Menu != null : "fx:id=\"settings_Menu\" was not injected: check your FXML file 'Options.fxml'.";
 	        assert language_Menu != null : "fx:id=\"language_Menu\" was not injected: check your FXML file 'Options.fxml'.";
@@ -146,7 +146,7 @@ public class OptionsController implements Initializable {
 		});
 		edit_ImageView.setImage(new Image("/pictures/edit2.png"));
 		evaluate_ImageView.setImage(new Image("/pictures/evaluate.png"));
-		viewWÉvaluation_ImageView.setImage(new Image("/pictures/chart2.png"));
+		viewEvaluation_ImageView.setImage(new Image("/pictures/chart2.png"));
 		
 	}
 
