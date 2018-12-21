@@ -1,8 +1,1 @@
-/application/
-/pictures/
-/Option_en_GB.properties
-/Option_de_DE.properties
-/Search_de_DE.properties
-/Search_en_GB.properties
-/Stands_de_DE.properties
-/Stands_en_GB.properties
+*.class
